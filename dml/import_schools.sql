@@ -11,43 +11,48 @@
 set datestyle to DMY;
 
 insert into schools (
-	urn,
-	ukprn,
-	name,
-	establishment_type,
-	establishment_type_group,
-	open,
-	opened_on,
-	closed_on,
-	censused_on,
-	pupils,
-	boys,
-	girls,
-	gender,
-	coordinates,
-	ofsted_rating,
-	phase,
-	local_authority,
-	government_office_region,
-	free_school_meals_percentage,
-	start_age,
-	finish_age,
-	capacity,
-	rural_urban_classification,
-	email_address,
-	trust_code,
-	trust_name,
-	headteacher_name
+    urn,
+    ukprn,
+    la_code,
+    establishment_code,
+    name,
+    establishment_type,
+    establishment_type_group,
+    open,
+    opened_on,
+    closed_on,
+    censused_on,
+    pupils,
+    boys,
+    girls,
+    gender,
+    coordinates,
+    ofsted_rating,
+    phase,
+    local_authority,
+    government_office_region,
+    free_school_meals_percentage,
+    start_age,
+    finish_age,
+    capacity,
+    rural_urban_classification,
+    email_address,
+    trust_code,
+    trust_name,
+    headteacher_name,
+    website
 )
 
 select
-	sr."URN"::integer,
-	case --ukprn
-	when (sr."UKPRN" is null or sr."UKPRN" = '')
-		then null
-	else
-		sr."UKPRN"::integer
+    sr."URN"::integer,
+        case --ukprn
+            when (sr."UKPRN" is null or sr."UKPRN" = '')
+                then null
+            else
+                sr."UKPRN"::integer
 	end,
+    nullif(sr."LA (code)", '')::integer,
+    nullif(sr."EstablishmentNumber", '')::integer,
 	sr."EstablishmentName",
 	sr."TypeOfEstablishment (name)"::establishment,
 	sr."EstablishmentTypeGroup (name)"::establishment_group,
@@ -154,11 +159,12 @@ select
 	nullif(sr."Trusts (code)", '')::integer,
 	nullif(sr."Trusts (name)", ''),
 
-	nullif(sr."HeadFirstName" || ' ' || sr."HeadLastName", '')
+	nullif(sr."HeadFirstName" || ' ' || sr."HeadLastName", ''),
+    nullif(sr."SchoolWebsite", '')
 
 from
-	schools_raw sr
-left outer join
-	email_addresses_raw ear
-		on sr."URN" = ear."URN"
+    schools_raw sr
+    left outer join
+    email_addresses_raw ear
+on sr."URN" = ear."URN"
 ;
