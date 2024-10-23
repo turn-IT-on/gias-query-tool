@@ -30,5 +30,12 @@ create table schools (
      trust_code integer,
      trust_name varchar(128),
      headteacher_name varchar(128),
-     website varchar(128)
+     street varchar(128),
+     locality varchar(128),
+     address3 varchar(128),
+     town varchar(128),
+     county varchar(128),
+     postcode varchar(8),
+     website varchar(128),
+     telephone_num varchar(128)
 );

@@ -40,7 +40,14 @@ insert into schools (
     trust_code,
     trust_name,
     headteacher_name,
-    website
+    street,
+    locality,
+    address3,
+    town,
+    county,
+    postcode,
+    website,
+    telephone_num
 )
 
 select
@@ -160,6 +167,13 @@ select
 	nullif(sr."Trusts (name)", ''),
 
 	nullif(sr."HeadFirstName" || ' ' || sr."HeadLastName", ''),
+    nullif(sr."Street", ''),
+    nullif(sr."Locality", ''),
+    nullif(sr."Address3", ''),
+    nullif(sr."Town", ''),
+    nullif(sr."County (name)", ''),
+    nullif(sr."Postcode", ''),
+    nullif(sr."TelephoneNum", ''),
     nullif(sr."SchoolWebsite", '')
 
 from
