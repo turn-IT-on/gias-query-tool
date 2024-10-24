@@ -26,10 +26,10 @@ download_gias_data:
 	iconv -f ISO8859-1 -t UTF-8 tmp/${gias_filename} > tmp/${fixed_filename}
 
 drop_database:
-	dropdb --if-exists ${database_name}
+	dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
 
 create_database:
-	createdb ${database_name}
+	createdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql
