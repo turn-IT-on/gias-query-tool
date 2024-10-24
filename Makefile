@@ -5,6 +5,7 @@ fixed_filename=edubasealldata${today}-fixed.csv
 database_name=gias
 data_dir=tmp
 
+
 reload: download_gias_data refresh
 
 refresh: drop_database           \
