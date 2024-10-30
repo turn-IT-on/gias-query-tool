@@ -25,12 +25,12 @@ download_gias_data:
 	iconv -f ISO8859-1 -t UTF-8 tmp/${gias_filename} > tmp/${fixed_filename}
 
 drop_database:
-	${psql_command} -c "DROP DATABASE IF EXISTS ${database_name}"
-	#dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
+	#${psql_command} -c "DROP DATABASE IF EXISTS ${database_name}"
+	PGPASSFILE=/home/alberon/.pgpass dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
 
 create_database:
-	${psql_command} -c "CREATE DATABASE ${database_name}"
-	#createdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres ${database_name}
+	#${psql_command} -c "CREATE DATABASE ${database_name}"
+	createdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql
