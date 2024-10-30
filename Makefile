@@ -1,4 +1,4 @@
-psql_command=psql -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres
+psql_command=psql -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --no-password
 #psql_command=psql
 today:=$(shell date "+%Y%m%d")
 gias_filename:=edubasealldata${today}.csv
