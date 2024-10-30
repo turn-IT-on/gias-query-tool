@@ -27,12 +27,12 @@ download_gias_data:
 	iconv -f ISO8859-1 -t UTF-8 tmp/${gias_filename} > tmp/${fixed_filename}
 
 drop_database:
-	${psql_command} ${admin_database_name} -c "DROP DATABASE IF EXISTS ${database_name}"
-	#dropdb -d gias --if-exists ${database_name}
+	#${psql_command} ${admin_database_name} -c "DROP DATABASE IF EXISTS ${database_name}"
+	dropdb -d gias --if-exists ${database_name}
 
 create_database:
-	${psql_command} ${admin_database_name} -c "CREATE DATABASE ${database_name}"
-#	createdb -d gias ${database_name}
+	#${psql_command} ${admin_database_name} -c "CREATE DATABASE ${database_name}"
+	createdb -d gias ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql
