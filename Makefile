@@ -26,7 +26,7 @@ download_gias_data:
 	iconv -f ISO8859-1 -t UTF-8 tmp/${gias_filename} > tmp/${fixed_filename}
 
 drop_database:
-	${psql_command} -c "DROP DATABASE IF EXISTS ${database_name}"
+	psql -c "DROP DATABASE IF EXISTS ${database_name}"
 	#dropdb -d gias --if-exists ${database_name}
 
 #create_database:
