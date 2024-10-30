@@ -28,11 +28,11 @@ download_gias_data:
 
 drop_database:
 	#${psql_command} ${admin_database_name} -c "DROP DATABASE IF EXISTS ${database_name}"
-	dropdb gias --if-exists ${database_name}
+	dropdb --if-exists ${database_name}
 
 create_database:
 	#${psql_command} ${admin_database_name} -c "CREATE DATABASE ${database_name}"
-	createdb gias ${database_name}
+	createdb ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql
