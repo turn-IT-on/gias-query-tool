@@ -1,4 +1,5 @@
-psql_command=psql -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres
+#psql_command=psql -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres
+psql_command=psql -d gias
 today:=$(shell date "+%Y%m%d")
 gias_filename:=edubasealldata${today}.csv
 fixed_filename=edubasealldata${today}-fixed.csv
@@ -26,11 +27,11 @@ download_gias_data:
 
 drop_database:
 	#${psql_command} -c "DROP DATABASE IF EXISTS ${database_name}"
-	dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
+	dropdb -d gias --if-exists ${database_name}
 
 create_database:
 	#${psql_command} -c "CREATE DATABASE ${database_name}"
-	createdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres ${database_name}
+	createdb -d gias ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql
