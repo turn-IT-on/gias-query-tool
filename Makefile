@@ -26,7 +26,7 @@ download_gias_data:
 
 drop_database:
 	#${psql_command} -c "DROP DATABASE IF EXISTS ${database_name}"
-	PGPASSFILE=/home/alberon/.pgpass dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
+	dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
 
 create_database:
 	#${psql_command} -c "CREATE DATABASE ${database_name}"
