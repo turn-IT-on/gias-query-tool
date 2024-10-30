@@ -47,7 +47,8 @@ insert into schools (
     county,
     postcode,
     website,
-    telephone_num
+    telephone_num,
+    updated_at
 )
 
 select
