@@ -37,5 +37,6 @@ create table schools (
      county varchar(128),
      postcode varchar(8),
      website varchar(128),
-     telephone_num varchar(128)
+     telephone_num varchar(128),
+     updated_at timestamp default current_timestamp
 );
