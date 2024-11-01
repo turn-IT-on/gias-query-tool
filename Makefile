@@ -7,9 +7,7 @@ data_dir=tmp
 
 reload: download_gias_data refresh
 
-refresh: drop_database           \
-		 create_database         \
-		 create_postgis          \
+refresh: create_postgis          \
 		 create_types            \
 		 create_holding_tables   \
 		 populate_holding_tables \
@@ -23,12 +21,6 @@ download_gias_data:
 	rm -f tmp/*.csv
 	wget https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/${gias_filename} --directory-prefix=${data_dir}
 	iconv -f ISO8859-1 -t UTF-8 tmp/${gias_filename} > tmp/${fixed_filename}
-
-drop_database:
-	#dropdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres --if-exists ${database_name}
-
-create_database:
-	#createdb -h gias-db.cluster-cuextdorzrgu.eu-west-2.rds.amazonaws.com -U postgres ${database_name}
 
 create_postgis:
 	${psql_command} ${database_name} < ddl/extensions/postgis.sql

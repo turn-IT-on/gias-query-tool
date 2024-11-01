@@ -173,9 +173,9 @@ select
     nullif(sr."Town", ''),
     nullif(sr."County (name)", ''),
     nullif(sr."Postcode", ''),
+    nullif(sr."SchoolWebsite", ''),
     nullif(sr."TelephoneNum", ''),
-    nullif(sr."SchoolWebsite", '')
-
+    current_timestamp
 from
     schools_raw sr
     left outer join
