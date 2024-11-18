@@ -45,8 +45,8 @@ insert into schools (
     address3,
     town,
     county,
-    website,
     postcode,
+    website,
     telephone_num,
     updated_at
 )
