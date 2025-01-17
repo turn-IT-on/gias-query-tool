@@ -27,7 +27,6 @@ insert into schools (
     girls,
     gender,
     coordinates,
-    ofsted_rating,
     phase,
     local_authority,
     government_office_region,
@@ -132,7 +131,6 @@ select
 		)
 	end,
 
-	nullif(sr."OfstedRating (name)", '')::ofsted_rating,
 	nullif(sr."PhaseOfEducation (name)", '')::phase,
 	sr."LA (name)",
 	case -- government_office_region
