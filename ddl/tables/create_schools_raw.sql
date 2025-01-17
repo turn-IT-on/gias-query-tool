@@ -121,8 +121,6 @@ CREATE TABLE "schools_raw" (
 	"GSSLACode (name)" VARCHAR NOT NULL,
 	"Easting" VARCHAR,
 	"Northing" VARCHAR,
-	"MSOA (name)" VARCHAR,
-	"LSOA (name)" VARCHAR,
 	"InspectorateName (name)" VARCHAR,
 	"SENStat" VARCHAR,
 	"SENNoStat" VARCHAR,
@@ -141,8 +139,6 @@ CREATE TABLE "schools_raw" (
 	"EstablishmentAccredited (name)" VARCHAR,
 	"QABReport" VARCHAR,
 	"CHNumber" VARCHAR,
-	"MSOA (code)" VARCHAR NOT NULL,
-	"LSOA (code)" VARCHAR NOT NULL,
 	"FSM" VARCHAR,
 	"AccreditationExpiryDate" VARCHAR
 );
