@@ -150,17 +150,20 @@ select
 	/*
 	 * upper case all of the classifications to standardise
 	 */
-	upper(
-		replace(
-			replace(
-				nullif(sr."UrbanRural (name)", ''),
-				'(England/Wales) ',
-				''
-			),
-			'(Scotland) ',
-			''
-		)
-	)::rural_urban_classification,
+    LEFT(
+        upper(
+            replace(
+                replace(
+                    nullif(sr."UrbanRural (name)", ''),
+                    '(England/Wales) ',
+                    ''
+                ),
+                '(Scotland) ',
+                ''
+            )
+        ),
+        63
+    )::rural_urban_classification,
 	nullif(ear."MailEmail", ''),
 	nullif(sr."Trusts (code)", '')::integer,
 	nullif(sr."Trusts (name)", ''),
@@ -176,8 +179,8 @@ select
     nullif(sr."TelephoneNum", ''),
     current_timestamp
 from
-    schools_raw sr
-    left outer join
-    email_addresses_raw ear
-on sr."URN" = ear."URN"
+	schools_raw sr
+left outer join
+	email_addresses_raw ear
+		on sr."URN" = ear."URN"
 ;

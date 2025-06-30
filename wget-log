@@ -1,0 +1,6 @@
+--2025-01-16 10:40:08--  https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/edubasealldata20250116.csv
+Resolving ea-edubase-api-prod.azurewebsites.net (ea-edubase-api-prod.azurewebsites.net)... 52.178.45.139
+Connecting to ea-edubase-api-prod.azurewebsites.net (ea-edubase-api-prod.azurewebsites.net)|52.178.45.139|:443... connected.
+HTTP request sent, awaiting response... 500 
+2025-01-16 10:40:36 ERROR 500: (no description).
+
