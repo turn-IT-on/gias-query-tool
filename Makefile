@@ -57,11 +57,11 @@ populate_holding_tables:
 	${psql_command} ${database_name} < dml/geo/import_local_authority_districts.sql
 
 drop_holding_tables:
-#	${psql_command} ${database_name} < ddl/tables/drop_schools_raw.sql
-#	${psql_command} ${database_name} < ddl/tables/drop_email_addresses_raw.sql
-#	${psql_command} ${database_name} < ddl/tables/drop_deprivation_pupil_premium_raw.sql
-#	${psql_command} ${database_name} < ddl/tables/geo/drop_electoral_regions_raw.sql
-#	${psql_command} ${database_name} < ddl/tables/geo/drop_local_authority_districts_raw.sql
+	${psql_command} ${database_name} < ddl/tables/drop_schools_raw.sql
+	${psql_command} ${database_name} < ddl/tables/drop_email_addresses_raw.sql
+	${psql_command} ${database_name} < ddl/tables/drop_deprivation_pupil_premium_raw.sql
+	${psql_command} ${database_name} < ddl/tables/geo/drop_electoral_regions_raw.sql
+	${psql_command} ${database_name} < ddl/tables/geo/drop_local_authority_districts_raw.sql
 
 populate_data_tables:
 	${psql_command} ${database_name} < dml/import_schools.sql
