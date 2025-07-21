@@ -1,6 +1,6 @@
 psql_command=PGPASSFILE=/etc/pgpass psql -h $(DB_GIAS_HOST) -U postgres
-#today:=$(shell date "+%Y%m%d")
-today=20250718
+today:=$(shell date "+%Y%m%d")
+#today=20250718
 gias_filename:=edubasealldata${today}.csv
 fixed_filename=edubasealldata${today}-fixed.csv
 database_name=gias
